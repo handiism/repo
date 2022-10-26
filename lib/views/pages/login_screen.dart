@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:repo/core/constants.dart';
+import 'package:repo/core/constant/colors.dart';
+import 'package:repo/core/constant/assets.dart';
 
 import 'package:repo/core/utils/formatting.dart';
 
