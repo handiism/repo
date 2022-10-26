@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class forgotpassword extends StatelessWidget {
-  const forgotpassword({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +68,18 @@ class forgotpassword extends StatelessWidget {
                       height: 44,
                       child: TextFormField(
                         style: TextStyle(
-                            fontSize: 16, color: Color.fromRGBO(1, 87, 92, 1)),
+                          fontSize: 16,
+                          color: Color.fromRGBO(1, 87, 92, 1),
+                        ),
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0x00000000)),
                               borderRadius: BorderRadius.circular(6)),
                           focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Color(0x00000000))),
+                            borderSide: BorderSide(
+                              color: Color(0x00000000),
+                            ),
+                          ),
                           hintText: "Masukkan Alamat Email",
                           hintStyle: TextStyle(
                               color: Color.fromRGBO(1, 87, 92, 1),
@@ -96,9 +99,11 @@ class forgotpassword extends StatelessWidget {
                         onPressed: () {},
                         child: Text("Kirim"),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Color.fromRGBO(1, 87, 92, 1),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6))),
+                          backgroundColor: Color.fromRGBO(1, 87, 92, 1),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                        ),
                       ),
                     ),
                   ),
