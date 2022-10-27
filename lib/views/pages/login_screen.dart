@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:repo/core/constant/colors.dart';
 import 'package:repo/core/constant/assets.dart';
-
+import 'package:get/get.dart';
 import 'package:repo/core/utils/formatting.dart';
+import 'package:repo/views/widgets/error_warning_message.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -11,7 +12,32 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
+bool _isObscure = true;
+
 class _LoginScreenState extends State<LoginScreen> {
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  nullHandler() {
+    bool terisi = true;
+    if (_emailController.text == "" || _passwordController.text == "") {
+      Message.pesanErrorAtauWarning(
+          "Warning!", "Email/Password Tidak Boleh Kosong!");
+      terisi = false;
+    }
+    return terisi;
+  }
+
+  emailHandler() {
+    bool emailValidation =
+        RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+            .hasMatch(_emailController.text);
+    if (!emailValidation) {
+      Message.pesanErrorAtauWarning("Warning!", "Email Salah!");
+    }
+    return emailValidation;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +50,8 @@ class _LoginScreenState extends State<LoginScreen> {
               children: [
                 Image.asset(
                   logoITC,
-                  height: 88.19999694824219,
-                  width: 54.60000228881836,
+                  height: 88,
+                  width: 54,
                 ),
                 const SizedBox(
                   height: 12,
@@ -57,12 +83,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 10,
                 ),
                 TextField(
+                  controller: _emailController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: convertColor(secondaryColor),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                         color: convertColor(primaryColor),
+                      ),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                        color: convertColor(primaryColor).withOpacity(0.8),
+                        width: 2,
                       ),
                     ),
                     hintText: "Email",
@@ -71,30 +104,52 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 15,
                 ),
-                TextField(
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: convertColor(secondaryColor),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: convertColor(primaryColor),
+                Container(
+                  child: TextField(
+                    controller: _passwordController,
+                    obscureText: _isObscure,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: convertColor(secondaryColor),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: convertColor(primaryColor),
+                        ),
                       ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: convertColor(primaryColor).withOpacity(0.8),
+                          width: 2,
+                        ),
+                      ),
+                      contentPadding: EdgeInsets.fromLTRB(12, 18, 20, 10),
+                      suffixIcon: IconButton(
+                        color: convertColor(primaryColor),
+                        icon: Icon(_isObscure
+                            ? Icons.visibility
+                            : Icons.visibility_off),
+                        onPressed: () {
+                          setState(() {
+                            _isObscure = !_isObscure;
+                          });
+                        },
+                      ),
+                      hintText: "Password",
                     ),
-                    hintText: "Password",
                   ),
-                ),
-                SizedBox(
-                  height: 10,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      "Lupa Kata sandi?",
-                      style: TextStyle(
-                        color: convertColor(primaryColor),
-                        fontWeight: FontWeight.w500,
-                        fontSize: 16,
+                    TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        "Lupa Kata sandi?",
+                        style: TextStyle(
+                          color: convertColor(primaryColor),
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ],
@@ -106,7 +161,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 44,
                   width: double.maxFinite,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      nullHandler();
+                      emailHandler();
+                    },
                     style: raisedButtonStyle,
                     child: Text(
                       "Masuk",
