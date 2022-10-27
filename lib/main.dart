@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: LoginScreen(),
+      home: SignupScreen_NoGetx(),
     );
   }
 } 
