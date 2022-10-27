@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:repo/controllers/signupController.dart';
 import 'package:repo/core/constant/assets.dart';
 
 import '../../core/constant/colors.dart';
@@ -12,7 +13,7 @@ class SignupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> _divisi = <String>["Mobile Development","Web Development","Human Resources"];
-    var _selectedDivisi;
+    SignupController _signupController = new SignupController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -122,13 +123,13 @@ class SignupScreen extends StatelessWidget {
                           child: Obx(()=> DropdownButton(
                               underline: SizedBox(),
                               isExpanded: true,
-                              value: _selectedDivisi,
+                              value: _signupController.selectedDivisi.value==""?null:_signupController.selectedDivisi.value,
                               hint: Text("Divisi"),
                               icon: const Icon(Icons.arrow_drop_down),
                               elevation: 2,
                               dropdownColor: convertColor(secondaryColor),
                               onChanged: (value){
-                                print(_divisi);
+                                _signupController.setDivisi(value!);
                               },
                               items: _divisi.map<DropdownMenuItem<String>>((String e){
                                 return DropdownMenuItem<String>(
