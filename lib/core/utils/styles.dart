@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:repo/core/constant/colors.dart';
-import 'package:repo/core/constant/assets.dart';
 
 import 'package:repo/core/utils/formatting.dart';
-ButtonStyle RaisedButtonStyle(){
+
+ButtonStyle raisedButtonStyle() {
   return ElevatedButton.styleFrom(
-  onPrimary: Colors.white,
-  primary: convertColor(primaryColor),
-  shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.all(Radius.circular(5))),
+    foregroundColor: Colors.white,
+    backgroundColor: convertColor(primaryColor),
+    shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(5))),
   );
 }
