@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:repo/core/constant/colors.dart';
+import 'package:get/get.dart';
 import 'package:repo/core/constant/assets.dart';
-import 'package:repo/core/utils/styles.dart';
+
+import '../../core/constant/colors.dart';
 import '../../core/utils/formatting.dart';
+import '../../core/utils/styles.dart';
 
-class SignupScreen_NoGetx extends StatefulWidget {
-  const SignupScreen_NoGetx({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<SignupScreen_NoGetx> createState() => _SignupScreen_NoGetxState();
-}
-
-class _SignupScreen_NoGetxState extends State<SignupScreen_NoGetx> {
-  @override
-  List<String> _divisi = <String>["Mobile Development","Web Development","Human Resources"];
-  var _selectedDivisi;
   Widget build(BuildContext context) {
+    List<String> _divisi = <String>["Mobile Development","Web Development","Human Resources"];
+    var _selectedDivisi;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -122,28 +119,25 @@ class _SignupScreen_NoGetxState extends State<SignupScreen_NoGetx> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.only(left: 12),
-                          child: DropdownButton(
-                            underline: SizedBox(),
-                            isExpanded: true,
-                            value: _selectedDivisi,
-                            hint: Text("Divisi"),
-                            icon: const Icon(Icons.arrow_drop_down),
-                            elevation: 2,
-                            dropdownColor: convertColor(secondaryColor),
-                            onChanged: (value){
-                              setState(() {
-                                _selectedDivisi = value;
-                                print(value);
-                              });
-                              print(_divisi);
-                            },
-                            items: _divisi.map<DropdownMenuItem<String>>((String e){
-                              return DropdownMenuItem<String>(
-                                value: e,
-                                child: Text(e),
-                              );
-                            }).toList(),
-                            
+                          child: Obx(()=> DropdownButton(
+                              underline: SizedBox(),
+                              isExpanded: true,
+                              value: _selectedDivisi,
+                              hint: Text("Divisi"),
+                              icon: const Icon(Icons.arrow_drop_down),
+                              elevation: 2,
+                              dropdownColor: convertColor(secondaryColor),
+                              onChanged: (value){
+                                print(_divisi);
+                              },
+                              items: _divisi.map<DropdownMenuItem<String>>((String e){
+                                return DropdownMenuItem<String>(
+                                  value: e,
+                                  child: Text(e),
+                                );
+                              }).toList(),
+                              
+                            ),
                           ),
                         ),
                       ),

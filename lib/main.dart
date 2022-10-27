@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:repo/views/pages/Signup_screen.dart';
 import 'package:repo/views/pages/login_screen.dart';
-import 'package:repo/views/pages/signup_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         primarySwatch: Colors.blue,
       ),
-      home: SignupScreen_NoGetx(),
+      home: SignupScreen(),
     );
   }
-} 
+}
