@@ -19,10 +19,14 @@ class Message {
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
+          color: Colors.white,
         ),
       ),
       messageText: Text(
         pesan,
+        style: TextStyle(
+          color: Colors.white,
+        ),
       ),
       borderRadius: 5,
     );
