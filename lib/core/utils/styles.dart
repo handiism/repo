@@ -3,7 +3,7 @@ import 'package:repo/core/constant/colors.dart';
 
 import 'package:repo/core/utils/formatting.dart';
 
-ButtonStyle RaisedButtonStyle() {
+ButtonStyle raisedButtonStyle() {
   return ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
     backgroundColor: convertColor(primaryColor),
