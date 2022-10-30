@@ -1,27 +1,22 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:repo/core/constant/colors.dart';
+import 'package:get/get.dart';
+import 'package:repo/controllers/signup_controller.dart';
 import 'package:repo/core/constant/assets.dart';
 import 'package:repo/core/utils/styles.dart';
-import '../../core/utils/formatting.dart';
+import 'package:repo/core/utils/formatting.dart';
+import 'package:repo/core/constant/colors.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+class SignupScreen extends StatelessWidget {
+  const SignupScreen({super.key});
 
-  @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpScreen> {
-  final List<String> _divisi = <String>[
-    "Mobile Development",
-    "Web Development",
-    "Human Resources"
-  ];
-  var _selectedDivisi;
   @override
   Widget build(BuildContext context) {
+    List<String> _divisi = <String>[
+      "Mobile Development",
+      "Web Development",
+      "Human Resources"
+    ];
+    SignUpController _signupController = SignUpController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -129,28 +124,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                           child: Padding(
                             padding: const EdgeInsets.only(left: 12),
-                            child: DropdownButton(
-                              underline: SizedBox(),
-                              isExpanded: true,
-                              value: _selectedDivisi,
-                              hint: Text("Divisi"),
-                              icon: const Icon(Icons.arrow_drop_down),
-                              elevation: 2,
-                              dropdownColor: convertColor(secondaryColor),
-                              onChanged: (value) {
-                                setState(() {
-                                  _selectedDivisi = value;
-                                  print(value);
-                                });
-                                print(_divisi);
-                              },
-                              items: _divisi
-                                  .map<DropdownMenuItem<String>>((String e) {
-                                return DropdownMenuItem<String>(
-                                  value: e,
-                                  child: Text(e),
-                                );
-                              }).toList(),
+                            child: Obx(
+                              () => DropdownButton(
+                                underline: SizedBox(),
+                                isExpanded: true,
+                                value: _signupController.selectedDivisi.value ==
+                                        ""
+                                    ? null
+                                    : _signupController.selectedDivisi.value,
+                                hint: Text("Divisi"),
+                                icon: const Icon(Icons.arrow_drop_down),
+                                elevation: 2,
+                                dropdownColor: convertColor(secondaryColor),
+                                onChanged: (value) {
+                                  _signupController.setDivisi(value!);
+                                },
+                                items: _divisi
+                                    .map<DropdownMenuItem<String>>((String e) {
+                                  return DropdownMenuItem<String>(
+                                    value: e,
+                                    child: Text(e),
+                                  );
+                                }).toList(),
+                              ),
                             ),
                           ),
                         ),
