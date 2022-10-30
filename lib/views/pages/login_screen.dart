@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:repo/core/constant/colors.dart';
 import 'package:repo/core/constant/assets.dart';
-import 'package:get/get.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/views/widgets/error_warning_message.dart';
 

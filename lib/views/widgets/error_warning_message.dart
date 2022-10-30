@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:repo/core/constant/colors.dart';
-
 import '../../core/utils/formatting.dart';
 
 class Message {
