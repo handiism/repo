@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:repo/core/constant/colors.dart';
+import 'package:repo/core/constant/assets.dart';
+import 'package:repo/core/utils/formatting.dart';
+import 'package:repo/core/utils/styles.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
@@ -23,20 +27,19 @@ class ForgotPasswordScreen extends StatelessWidget {
                     child: Container(
                       height: 100,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage("assets/images/itc.png")),
+                        image: DecorationImage(image: AssetImage(logoITC)),
                       ),
                     ),
                   ),
 
-                  const Padding(
+                  Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                     child: Text(
                       "ITC Repository",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF01575C),
+                          color: convertColor(primaryColor),
                           fontSize: 28),
                     ),
                   ),
@@ -69,7 +72,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       child: TextFormField(
                         style: TextStyle(
                           fontSize: 16,
-                          color: Color.fromRGBO(1, 87, 92, 1),
+                          color: convertColor(primaryColor),
                         ),
                         decoration: InputDecoration(
                           enabledBorder: OutlineInputBorder(
@@ -77,15 +80,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(6)),
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                              color: Color(0x00000000),
+                              color: convertColor(primaryColor),
                             ),
                           ),
                           hintText: "Masukkan Alamat Email",
                           hintStyle: TextStyle(
-                              color: Color.fromRGBO(1, 87, 92, 1),
-                              fontSize: 16),
+                              color: convertColor(primaryColor), fontSize: 16),
                           filled: true,
-                          fillColor: Color.fromRGBO(217, 230, 231, 1),
+                          fillColor: convertColor(secondaryColor),
                         ),
                       ),
                     ),
@@ -98,12 +100,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       child: ElevatedButton(
                         onPressed: () {},
                         child: Text("Kirim"),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color.fromRGBO(1, 87, 92, 1),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                          ),
-                        ),
+                        style: raisedButtonStyle(),
                       ),
                     ),
                   ),
