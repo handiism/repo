@@ -3,9 +3,10 @@ import 'package:repo/core/constant/colors.dart';
 import 'package:repo/core/constant/assets.dart';
 import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/formatting.dart';
-import 'package:repo/core/utils/styles.dart';
-import 'package:repo/views/widgets/error_warning_message.dart';
+import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
+
+import '../widgets/error_warning_message_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -90,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     fillColor: hexToColor(ColorsRepo.secondaryColor),
                     enabledBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                        color: hexToColor(ColorsRepo.secondaryColor),
+                        color: hexToColor(ColorsRepo.primaryColor),
                       ),
                     ),
                     focusedBorder: UnderlineInputBorder(
@@ -157,23 +158,17 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
-                SizedBox(
-                  height: 44,
-                  width: double.maxFinite,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      nullHandler();
-                      emailHandler();
-                    },
-                    style: raisedButtonStyle(),
-                    child: const Text(
-                      'Masuk',
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
+                GestureDetector(
+                  onTap: () {
+                    nullHandler();
+                    emailHandler();
+                  },
+                  child: const ButtonWidget(
+                    text: 'Masuk',
+                    backgroundColor: ColorsRepo.primaryColor,
+                    changeTextColor: false,
                   ),
                 ),
                 Row(
