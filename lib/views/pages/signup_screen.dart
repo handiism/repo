@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:repo/controllers/signup_controller.dart';
 import 'package:repo/core/constant/assets.dart';
+import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/styles.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/constant/colors.dart';
@@ -11,12 +12,12 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> _divisi = <String>[
-      "Mobile Development",
-      "Web Development",
-      "Human Resources"
+    List<String> divisi = <String>[
+      'Mobile Development',
+      'Web Development',
+      'Human Resources'
     ];
-    SignUpController _signupController = SignUpController();
+    SignUpController signupController = SignUpController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -28,7 +29,7 @@ class SignupScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     Image.asset(
-                      logoITC,
+                      AssetsRepo.itcLogo,
                       height: 88.19999694824219,
                       width: 54.60000228881836,
                     ),
@@ -36,9 +37,9 @@ class SignupScreen extends StatelessWidget {
                       height: 12,
                     ),
                     Text(
-                      "ITC Repository",
+                      'ITC Repository',
                       style: TextStyle(
-                        color: convertColor(primaryColor),
+                        color: hexToColor(ColorsRepo.primaryColor),
                         fontWeight: FontWeight.bold,
                         fontSize: 28,
                       ),
@@ -50,7 +51,7 @@ class SignupScreen extends StatelessWidget {
                 height: 25,
               ),
               const Text(
-                "Daftar",
+                'Daftar',
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -67,13 +68,13 @@ class SignupScreen extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: convertColor(secondaryColor),
+                          fillColor: hexToColor(ColorsRepo.secondaryColor),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: convertColor(primaryColor),
+                              color: hexToColor(ColorsRepo.primaryColor),
                             ),
                           ),
-                          hintText: "Nama",
+                          hintText: 'Nama',
                         ),
                       ),
                       const SizedBox(
@@ -82,13 +83,13 @@ class SignupScreen extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: convertColor(secondaryColor),
+                          fillColor: hexToColor(ColorsRepo.secondaryColor),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: convertColor(primaryColor),
+                              color: hexToColor(ColorsRepo.primaryColor),
                             ),
                           ),
-                          hintText: "Username",
+                          hintText: 'Username',
                         ),
                       ),
                       const SizedBox(
@@ -97,13 +98,13 @@ class SignupScreen extends StatelessWidget {
                       TextField(
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: convertColor(secondaryColor),
+                          fillColor: hexToColor(ColorsRepo.secondaryColor),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: convertColor(primaryColor),
+                              color: hexToColor(ColorsRepo.primaryColor),
                             ),
                           ),
-                          hintText: "Email",
+                          hintText: 'Email',
                         ),
                       ),
                       const SizedBox(
@@ -113,39 +114,41 @@ class SignupScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             border: Border(
                                 bottom: BorderSide(
-                                    color: convertColor(primaryColor),
+                                    color: hexToColor(ColorsRepo.primaryColor),
                                     width: 1))),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(4),
                                 topRight: Radius.circular(4)),
-                            color: convertColor(secondaryColor),
+                            color: hexToColor(ColorsRepo.secondaryColor),
                           ),
                           child: Padding(
                             padding: const EdgeInsets.only(left: 12),
                             child: Obx(
                               () => DropdownButton(
-                                underline: SizedBox(),
+                                underline: const SizedBox(),
                                 isExpanded: true,
-                                value: _signupController.selectedDivisi.value ==
-                                        ""
-                                    ? null
-                                    : _signupController.selectedDivisi.value,
-                                hint: Text("Divisi"),
+                                value:
+                                    signupController.selectedDivisi.value == ''
+                                        ? null
+                                        : signupController.selectedDivisi.value,
+                                hint: const Text('Divisi'),
                                 icon: const Icon(Icons.arrow_drop_down),
                                 elevation: 2,
-                                dropdownColor: convertColor(secondaryColor),
+                                dropdownColor:
+                                    hexToColor(ColorsRepo.secondaryColor),
                                 onChanged: (value) {
-                                  _signupController.setDivisi(value!);
+                                  signupController.setDivisi(value!);
                                 },
-                                items: _divisi
-                                    .map<DropdownMenuItem<String>>((String e) {
-                                  return DropdownMenuItem<String>(
-                                    value: e,
-                                    child: Text(e),
-                                  );
-                                }).toList(),
+                                items: divisi.map<DropdownMenuItem<String>>(
+                                  (String e) {
+                                    return DropdownMenuItem<String>(
+                                      value: e,
+                                      child: Text(e),
+                                    );
+                                  },
+                                ).toList(),
                               ),
                             ),
                           ),
@@ -158,26 +161,26 @@ class SignupScreen extends StatelessWidget {
                         obscureText: true,
                         decoration: InputDecoration(
                           filled: true,
-                          fillColor: convertColor(secondaryColor),
+                          fillColor: hexToColor(ColorsRepo.secondaryColor),
                           enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
-                              color: convertColor(primaryColor),
+                              color: hexToColor(ColorsRepo.primaryColor),
                             ),
                           ),
-                          hintText: "Password",
+                          hintText: 'Password',
                         ),
                       ),
                       const SizedBox(
                         height: 20,
                       ),
-                      Container(
+                      SizedBox(
                         height: 44,
                         width: double.maxFinite,
                         child: ElevatedButton(
                           onPressed: () {},
                           style: raisedButtonStyle(),
                           child: const Text(
-                            "Daftar",
+                            'Daftar',
                             style: TextStyle(
                               fontSize: 16,
                             ),
@@ -187,8 +190,13 @@ class SignupScreen extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Sudah mempunyai akun?"),
-                          TextButton(onPressed: () {}, child: Text("Masuk"))
+                          const Text('Sudah mempunyai akun?'),
+                          TextButton(
+                            onPressed: () {
+                              Get.toNamed(RoutesRepo.login);
+                            },
+                            child: const Text('Masuk'),
+                          ),
                         ],
                       ),
                     ],

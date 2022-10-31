@@ -6,8 +6,9 @@ import 'package:repo/core/utils/formatting.dart';
 ButtonStyle raisedButtonStyle() {
   return ElevatedButton.styleFrom(
     foregroundColor: Colors.white,
-    backgroundColor: convertColor(primaryColor),
+    backgroundColor: hexToColor(ColorsRepo.primaryColor),
     shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(5))),
+      borderRadius: BorderRadius.all(Radius.circular(5)),
+    ),
   );
 }
