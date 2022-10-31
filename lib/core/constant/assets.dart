@@ -1,1 +1,3 @@
-const String logoITC = "assets/images/itc.png";
+abstract class AssetsRepo {
+  static const String itcLogo = 'assets/images/itc.png';
+}
