@@ -5,6 +5,7 @@ import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
+import 'package:repo/views/widgets/textfield_widget.dart';
 
 import '../widgets/error_warning_message_widget.dart';
 
@@ -14,8 +15,6 @@ class LoginScreen extends StatefulWidget {
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
-
-bool _isObscure = true;
 
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
@@ -84,60 +83,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                TextField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: hexToColor(ColorsRepo.secondaryColor),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: hexToColor(ColorsRepo.primaryColor),
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: hexToColor(ColorsRepo.primaryColor)
-                            .withOpacity(0.8),
-                        width: 2,
-                      ),
-                    ),
-                    hintText: 'Email',
-                  ),
+                TextfieldWidget(
+                  textController: _emailController,
+                  hintText: 'Email',
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                TextField(
-                  controller: _passwordController,
-                  obscureText: _isObscure,
-                  decoration: InputDecoration(
-                    filled: true,
-                    fillColor: hexToColor(ColorsRepo.secondaryColor),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: hexToColor(ColorsRepo.primaryColor),
-                      ),
-                    ),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: hexToColor(ColorsRepo.primaryColor)
-                            .withOpacity(0.8),
-                        width: 2,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.fromLTRB(12, 18, 20, 10),
-                    suffixIcon: IconButton(
-                      color: hexToColor(ColorsRepo.primaryColor),
-                      icon: Icon(
-                          _isObscure ? Icons.visibility : Icons.visibility_off),
-                      onPressed: () {
-                        setState(() {
-                          _isObscure = !_isObscure;
-                        });
-                      },
-                    ),
-                    hintText: 'Password',
-                  ),
+                TextfieldWidget(
+                  textController: _passwordController,
+                  hintText: 'Password',
+                  obscureText: true,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
