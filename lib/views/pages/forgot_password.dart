@@ -4,10 +4,32 @@ import 'package:repo/core/constant/assets.dart';
 import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/utils/styles.dart';
+import 'package:repo/views/widgets/error_warning_message.dart';
 import 'package:get/get.dart';
+
+final TextEditingController _emailController = TextEditingController();
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
+
+  nullHandler() {
+    bool terisi = true;
+    if (_emailController.text == '') {
+      snackbarRepo('Warning!', 'Email Tidak Boleh Kosong!');
+      terisi = false;
+    }
+    return terisi;
+  }
+
+  emailHandler() {
+    bool emailValidation =
+        RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+            .hasMatch(_emailController.text);
+    if (!emailValidation) {
+      snackbarRepo('Warning!', 'Email Salah!');
+    }
+    return emailValidation;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +94,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 44,
                     child: TextFormField(
+                      controller: _emailController,
                       style: TextStyle(
                         fontSize: 16,
                         color: hexToColor(ColorsRepo.primaryColor),
@@ -103,7 +126,10 @@ class ForgotPasswordScreen extends StatelessWidget {
                   child: SizedBox(
                     height: 44,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        nullHandler();
+                        emailHandler();
+                      },
                       style: raisedButtonStyle(),
                       child: const Text('Kirim'),
                     ),
