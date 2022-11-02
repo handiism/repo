@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:repo/controllers/signup_controller.dart';
+import 'package:repo/controllers/sign_up_controller.dart';
 import 'package:repo/core/constant/assets.dart';
 import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/styles.dart';
