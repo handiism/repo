@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:repo/views/pages/forgot_password.dart';
-import 'package:repo/views/pages/login_screen.dart';
-import 'package:repo/views/pages/signup_screen.dart';
+import 'package:repo/views/screens/forgot_pass_screen.dart';
+import 'package:repo/views/screens/login_screen.dart';
+import 'package:repo/views/screens/sign_up_screen.dart';
 
 abstract class RoutesRepo {
   static const String login = '/login';
