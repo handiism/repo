@@ -4,7 +4,7 @@ import 'package:repo/core/constant/assets.dart';
 import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/utils/styles.dart';
-import 'package:repo/views/widgets/error_warning_message_widget.dart';
+import 'package:repo/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
 
 final TextEditingController _emailController = TextEditingController();

@@ -5,9 +5,9 @@ import 'package:repo/core/routes.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
-import 'package:repo/views/widgets/textfield_widget.dart';
+import 'package:repo/views/widgets/text_field_widget.dart';
 
-import '../widgets/error_warning_message_widget.dart';
+import '../widgets/snackbar_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
