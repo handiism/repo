@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
 class SignUpController extends GetxController {
-  final selectedDivisi = ''.obs;
-  void setDivisi(String newValue) {
-    selectedDivisi.value = newValue;
+  final selectedDivision = ''.obs;
+  void setDivision(String division) {
+    selectedDivision.value = division;
   }
 }

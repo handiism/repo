@@ -13,12 +13,12 @@ class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
 
   nullHandler() {
-    bool terisi = true;
+    bool isFilled = true;
     if (_emailController.text == '') {
       snackbarRepo('Warning!', 'Email Tidak Boleh Kosong!');
-      terisi = false;
+      isFilled = false;
     }
-    return terisi;
+    return isFilled;
   }
 
   emailHandler() {

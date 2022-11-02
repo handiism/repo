@@ -7,8 +7,8 @@ import 'package:repo/core/utils/styles.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/constant/colors.dart';
 
-class SignupScreen extends StatelessWidget {
-  const SignupScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class SignupScreen extends StatelessWidget {
       'Web Development',
       'Human Resources'
     ];
-    SignUpController signupController = SignUpController();
+    SignUpController signUpController = SignUpController();
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -129,17 +129,18 @@ class SignupScreen extends StatelessWidget {
                               () => DropdownButton(
                                 underline: const SizedBox(),
                                 isExpanded: true,
-                                value:
-                                    signupController.selectedDivisi.value == ''
-                                        ? null
-                                        : signupController.selectedDivisi.value,
+                                value: signUpController
+                                            .selectedDivision.value ==
+                                        ''
+                                    ? null
+                                    : signUpController.selectedDivision.value,
                                 hint: const Text('Divisi'),
                                 icon: const Icon(Icons.arrow_drop_down),
                                 elevation: 2,
                                 dropdownColor:
                                     hexToColor(ColorsRepo.secondaryColor),
                                 onChanged: (value) {
-                                  signupController.setDivisi(value!);
+                                  signUpController.setDivision(value!);
                                 },
                                 items: divisi.map<DropdownMenuItem<String>>(
                                   (String e) {

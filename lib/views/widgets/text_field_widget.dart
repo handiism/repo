@@ -5,11 +5,11 @@ import 'package:repo/core/utils/formatting.dart';
 bool _isObscure = true;
 bool _isnotObscure = false;
 
-class TextfieldWidget extends StatefulWidget {
+class TextFieldRepo extends StatefulWidget {
   final TextEditingController textController;
   final String hintText;
   final bool obscureText;
-  const TextfieldWidget({
+  const TextFieldRepo({
     super.key,
     required this.textController,
     required this.hintText,
@@ -17,10 +17,10 @@ class TextfieldWidget extends StatefulWidget {
   });
 
   @override
-  State<TextfieldWidget> createState() => _TextfieldWidgetState();
+  State<TextFieldRepo> createState() => _TextFieldRepoState();
 }
 
-class _TextfieldWidgetState extends State<TextfieldWidget> {
+class _TextFieldRepoState extends State<TextFieldRepo> {
   @override
   Widget build(BuildContext context) {
     return TextField(
