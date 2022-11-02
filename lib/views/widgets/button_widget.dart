@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:repo/core/constant/colors.dart';
 import 'package:repo/core/utils/formatting.dart';
 
-class ButtonWidget extends StatelessWidget {
+class ButtonRepo extends StatelessWidget {
   final String text;
   final String backgroundColor;
   final bool changeTextColor;
   final double widthButton;
-  const ButtonWidget({
+  const ButtonRepo({
     super.key,
     required this.text,
     this.changeTextColor = false,

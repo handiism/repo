@@ -16,7 +16,7 @@ abstract class RoutesRepo {
     ),
     GetPage(
       name: signup,
-      page: () => const SignupScreen(),
+      page: () => const SignUpScreen(),
     ),
     GetPage(
       name: forgotPassword,

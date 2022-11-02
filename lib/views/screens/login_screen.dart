@@ -6,8 +6,7 @@ import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
 import 'package:repo/views/widgets/text_field_widget.dart';
-
-import '../widgets/snackbar_widget.dart';
+import 'package:repo/views/widgets/snackbar_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -21,12 +20,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   nullHandler() {
-    bool terisi = true;
+    bool isFilled = true;
     if (_emailController.text == '' || _passwordController.text == '') {
       snackbarRepo('Warning!', 'Email/Password Tidak Boleh Kosong!');
-      terisi = false;
+      isFilled = false;
     }
-    return terisi;
+    return isFilled;
   }
 
   emailHandler() {
@@ -83,14 +82,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                TextfieldWidget(
+                TextFieldRepo(
                   textController: _emailController,
                   hintText: 'Email',
                 ),
                 const SizedBox(
                   height: 15,
                 ),
-                TextfieldWidget(
+                TextFieldRepo(
                   textController: _passwordController,
                   hintText: 'Password',
                   obscureText: true,
@@ -121,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     nullHandler();
                     emailHandler();
                   },
-                  child: const ButtonWidget(
+                  child: const ButtonRepo(
                     text: 'Masuk',
                     backgroundColor: ColorsRepo.primaryColor,
                     changeTextColor: false,
