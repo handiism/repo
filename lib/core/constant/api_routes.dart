@@ -1,4 +1,4 @@
-class Config {
-  static const String apiUrl = 'apiURL';
-  static const String login = 'URL yang navigate ke login';
+class ApiRoutesRepo {
+  static const String baseUrl = 'http://34.101.216.127:3000';
+  static const String login = '/login';
 }

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:repo/core/constant/config.dart';
+import 'package:repo/core/constant/api_routes.dart';
 import 'package:repo/services/api_service.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 
@@ -10,7 +10,7 @@ class LoginController extends GetxController {
 
   Future<void> login(String emailUsername, String password) async {
     _isLoading = true;
-    Response response = await service.login(Config.login, {
+    Response response = await service.login(ApiRoutesRepo.login, {
       'emailUsername': emailUsername,
       'password': password,
     });

@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:repo/core/constant/config.dart';
+import 'package:repo/core/constant/api_routes.dart';
 
 class APIService extends GetConnect implements GetxService {
   Future<Response> login(String uri, dynamic body) async {
     Response response = await post(
-      Config.apiUrl + uri,
+      ApiRoutesRepo.baseUrl + uri,
       body,
       headers: {'Content-Type': 'application/json; charset=UTF-8'},
     );
