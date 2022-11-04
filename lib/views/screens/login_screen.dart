@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:repo/controllers/login_controller.dart';
 import 'package:repo/core/constant/colors.dart';
 import 'package:repo/core/constant/assets.dart';
 import 'package:repo/core/routes.dart';
@@ -40,6 +41,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(
+      () => LoginController(),
+    );
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.fromLTRB(34, 34, 34, 0),
@@ -117,8 +121,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    nullHandler();
-                    emailHandler();
+                    if (nullHandler()) {
+                      if (emailHandler()) {
+                        Get.find<LoginController>().login(
+                          _emailController.text.trim(),
+                          _passwordController.text.trim(),
+                        );
+                      }
+                    }
                   },
                   child: const ButtonRepo(
                     text: 'Masuk',
