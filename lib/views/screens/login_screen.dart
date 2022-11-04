@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:repo/controllers/login_controller.dart';
 import 'package:repo/core/colors.dart';
 import 'package:repo/core/assets.dart';
-import 'package:repo/core/routes.dart';
 import 'package:repo/core/formatting.dart';
+import 'package:repo/core/routes/routes.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
 import 'package:repo/views/widgets/text_field_widget.dart';
@@ -103,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(RoutesRepo.forgotPassword);
+                        Get.toNamed(AppRoutesRepo.forgotPassword);
                       },
                       child: Text(
                         'Lupa Kata sandi?',
@@ -148,7 +148,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.toNamed(RoutesRepo.signup);
+                        Get.toNamed(AppRoutesRepo.signup);
                       },
                       child: Text(
                         'Daftar',

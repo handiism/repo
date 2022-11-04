@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:repo/core/colors.dart';
 import 'package:repo/core/assets.dart';
-import 'package:repo/core/routes.dart';
 import 'package:repo/core/formatting.dart';
+import 'package:repo/core/routes/routes.dart';
 import 'package:repo/core/styles.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
@@ -139,7 +139,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                   child: TextButton(
                     onPressed: () {
-                      Get.toNamed(RoutesRepo.login);
+                      Get.toNamed(AppRoutesRepo.login);
                     },
                     child: const Text(
                       'Kembali ke Halaman Masuk',

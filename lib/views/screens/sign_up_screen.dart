@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:repo/controllers/sign_up_controller.dart';
 import 'package:repo/core/assets.dart';
-import 'package:repo/core/routes.dart';
+import 'package:repo/core/routes/routes.dart';
 import 'package:repo/core/styles.dart';
 import 'package:repo/core/formatting.dart';
 import 'package:repo/core/colors.dart';
@@ -194,7 +194,7 @@ class SignUpScreen extends StatelessWidget {
                           const Text('Sudah mempunyai akun?'),
                           TextButton(
                             onPressed: () {
-                              Get.toNamed(RoutesRepo.login);
+                              Get.toNamed(AppRoutesRepo.login);
                             },
                             child: const Text('Masuk'),
                           ),

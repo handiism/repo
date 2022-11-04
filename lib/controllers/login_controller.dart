@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:repo/core/api_routes.dart';
+import 'package:repo/core/routes/routes.dart';
 import 'package:repo/services/api_service.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 
 class LoginController extends GetxController {
-  APIService service = APIService();
+  ApiService service = ApiService();
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
