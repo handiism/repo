@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:repo/controllers/login_controller.dart';
-import 'package:repo/core/constant/colors.dart';
-import 'package:repo/core/constant/assets.dart';
+import 'package:repo/core/colors.dart';
+import 'package:repo/core/assets.dart';
 import 'package:repo/core/routes.dart';
-import 'package:repo/core/utils/formatting.dart';
+import 'package:repo/core/formatting.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
 import 'package:repo/views/widgets/text_field_widget.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:repo/core/constant/colors.dart';
+import 'package:repo/core/colors.dart';
 
-import 'package:repo/core/utils/formatting.dart';
+import 'package:repo/core/formatting.dart';
 
 ButtonStyle raisedButtonStyle() {
   return ElevatedButton.styleFrom(

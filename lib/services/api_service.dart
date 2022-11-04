@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:repo/core/constant/api_routes.dart';
+import 'package:repo/core/api_routes.dart';
 
 class APIService extends GetConnect implements GetxService {
   Future<Response> login(String uri, dynamic body) async {

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:repo/core/constant/api_routes.dart';
+import 'package:repo/core/api_routes.dart';
 import 'package:repo/services/api_service.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 
