@@ -1,51 +1,15 @@
 import 'dart:convert';
 
-LoginResponseModel loginResponseModel(String str) =>
-    LoginResponseModel.fromJson(jsonDecode(str));
+User userFromJson(String str) => User.fromJson(json.decode(str));
+String userToJson(User data) => json.encode(data.toJson());
+UserLoginResponse userLoginResponseFromJson(String str) =>
+    UserLoginResponse.fromJson(json.decode(str));
+String userLoginResponseToJson(UserLoginResponse data) =>
+    json.encode(data.toJson());
 
-class LoginResponseModel {
-  LoginResponseModel({
-    required this.status,
-    required this.data,
-  });
-  late final String status;
-  late final Data data;
+User welcomeFromJson(String str) => User.fromJson(json.decode(str));
 
-  LoginResponseModel.fromJson(Map<String, dynamic> json) {
-    status = json['status'];
-    data = Data.fromJson(json['data']);
-  }
-
-  Map<String, dynamic> toJson() {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _data = <String, dynamic>{};
-    _data['status'] = status;
-    _data['data'] = data.toJson();
-    return _data;
-  }
-}
-
-class Data {
-  Data({
-    required this.user,
-    required this.accessToken,
-  });
-  late final User user;
-  late final String accessToken;
-
-  Data.fromJson(Map<String, dynamic> json) {
-    user = User.fromJson(json['user']);
-    accessToken = json['accessToken'];
-  }
-
-  Map<String, dynamic> toJson() {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _data = <String, dynamic>{};
-    _data['user'] = user.toJson();
-    _data['accessToken'] = accessToken;
-    return _data;
-  }
-}
+String welcomeToJson(User data) => json.encode(data.toJson());
 
 class User {
   User({
@@ -53,30 +17,102 @@ class User {
     required this.email,
     required this.username,
     required this.fullName,
-    required this.role,
+    required this.idRole,
+    required this.idDivision,
+    this.password,
+    this.accessToken,
   });
-  late final int id;
-  late final String email;
-  late final String username;
-  late final String fullName;
-  late final int role;
 
-  User.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    email = json['email'];
-    username = json['username'];
-    fullName = json['fullName'];
-    role = json['role'];
+  int id;
+  String email;
+  String username;
+  String fullName;
+  int idRole;
+  String? password;
+  int idDivision;
+  String? accessToken;
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        id: json['id'],
+        email: json['email'],
+        username: json['username'],
+        fullName: json['fullName'],
+        idRole: json['id_role'],
+        idDivision: json['id_division'],
+        password: json['password'],
+        accessToken: json['accessToken'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'email': email,
+        'username': username,
+        'fullName': fullName,
+        'id_role': idRole,
+        'password': password,
+        'id_division': idDivision,
+        'accessToken': accessToken,
+      };
+}
+
+class UserLoginRequest {
+  UserLoginRequest({
+    required this.emailUsername,
+    required this.password,
+  });
+  late final String emailUsername;
+  late final String password;
+
+  UserLoginRequest.fromJson(Map<String, dynamic> json) {
+    emailUsername = json['emailUsername'];
+    password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
-    // ignore: no_leading_underscores_for_local_identifiers
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['email'] = email;
-    _data['username'] = username;
-    _data['fullName'] = fullName;
-    _data['role'] = role;
-    return _data;
+    final data = <String, dynamic>{};
+    data['emailUsername'] = emailUsername;
+    data['password'] = password;
+    return data;
   }
+}
+
+class UserLoginResponse {
+  UserLoginResponse({
+    required this.id,
+    required this.email,
+    required this.username,
+    required this.fullName,
+    required this.idRole,
+    required this.idDivision,
+    required this.accessToken,
+  });
+
+  int id;
+  String email;
+  String username;
+  String fullName;
+  int idRole;
+  int idDivision;
+  String accessToken;
+
+  factory UserLoginResponse.fromJson(Map<String, dynamic> json) =>
+      UserLoginResponse(
+        id: json['id'],
+        email: json['email'],
+        username: json['username'],
+        fullName: json['fullName'],
+        idRole: json['id_role'],
+        idDivision: json['id_division'],
+        accessToken: json['accessToken'],
+      );
+
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'email': email,
+        'username': username,
+        'fullName': fullName,
+        'id_role': idRole,
+        'id_division': idDivision,
+        'accessToken': accessToken,
+      };
 }

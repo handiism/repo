@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:repo/core/colors.dart';
-import 'package:repo/core/assets.dart';
-import 'package:repo/core/formatting.dart';
+import 'package:repo/core/shared/colors.dart';
+import 'package:repo/core/shared/assets.dart';
+import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/routes/routes.dart';
-import 'package:repo/core/styles.dart';
+import 'package:repo/core/shared/styles.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
 

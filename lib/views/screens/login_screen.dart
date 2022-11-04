@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:repo/controllers/login_controller.dart';
-import 'package:repo/core/colors.dart';
-import 'package:repo/core/assets.dart';
-import 'package:repo/core/formatting.dart';
+import 'package:repo/core/shared/colors.dart';
+import 'package:repo/core/shared/assets.dart';
+import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/routes/routes.dart';
+import 'package:repo/models/user/user.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
 import 'package:repo/views/widgets/text_field_widget.dart';
@@ -119,22 +120,21 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 10,
                 ),
-                GestureDetector(
-                  onTap: () {
+                ButtonRepo(
+                  text: 'Masuk',
+                  backgroundColor: ColorsRepo.primaryColor,
+                  changeTextColor: false,
+                  onPressed: () {
                     if (nullHandler()) {
                       if (emailHandler()) {
-                        Get.find<LoginController>().login(
-                          _emailController.text.trim(),
-                          _passwordController.text.trim(),
+                        UserLoginRequest request = UserLoginRequest(
+                          emailUsername: _emailController.text.trim(),
+                          password: _passwordController.text.trim(),
                         );
+                        Get.find<LoginController>().login(request);
                       }
                     }
                   },
-                  child: const ButtonRepo(
-                    text: 'Masuk',
-                    backgroundColor: ColorsRepo.primaryColor,
-                    changeTextColor: false,
-                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

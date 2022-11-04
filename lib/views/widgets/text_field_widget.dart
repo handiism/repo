@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:repo/core/colors.dart';
-import 'package:repo/core/formatting.dart';
+import 'package:repo/core/shared/colors.dart';
+import 'package:repo/core/utils/formatting.dart';
 
 bool _isObscure = true;
 bool _isnotObscure = false;

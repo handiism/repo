@@ -1,0 +1,11 @@
+### Get Division
+GET http://34.101.216.127:3000/division HTTP/1.1
+
+
+### Register
+POST http://34.101.216.127:3000/user/register HTTP/1.1
+Content-Type: : "application/json; "
+
+{
+    "email":"mail@gmail.com"
+}

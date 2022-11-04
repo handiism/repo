@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:repo/core/colors.dart';
-import 'package:repo/core/formatting.dart';
+import 'package:repo/core/shared/colors.dart';
+import 'package:repo/core/utils/formatting.dart';
 
 SnackbarController snackbarRepo(String title, String message) {
   return Get.snackbar(
