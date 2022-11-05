@@ -6,6 +6,7 @@ import 'package:repo/core/shared/assets.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/models/user/user.dart';
+import 'package:repo/views/widgets/banner_widget.dart';
 import 'package:repo/views/widgets/button_widget.dart';
 import 'package:get/get.dart';
 import 'package:repo/views/widgets/text_field_widget.dart';
@@ -47,32 +48,15 @@ class _LoginScreenState extends State<LoginScreen> {
       () => LoginController(),
     );
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(34, 34, 34, 0),
-        child: Container(
-          margin: const EdgeInsets.only(top: 35.8),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(36, 36, 36, 0),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Image.asset(
-                  AssetsRepo.itcLogo,
-                  height: 88,
-                  width: 54,
-                ),
+                const BannerRepo(),
                 const SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  'ITC Repository',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: hexToColor(ColorsRepo.primaryColor),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 28,
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
+                  height: 24,
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
@@ -87,18 +71,48 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  height: 12,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Email',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(
+                  height: 4,
                 ),
                 TextFieldRepo(
                   textController: _emailController,
-                  hintText: 'Email',
+                  hintText: 'Masukkan alamat email',
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 24,
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Password',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                    ),
+                    textAlign: TextAlign.left,
+                  ),
+                ),
+                const SizedBox(
+                  height: 4,
                 ),
                 TextFieldRepo(
                   textController: _passwordController,
-                  hintText: 'Password',
+                  hintText: 'Masukkan password',
                   obscureText: true,
                 ),
                 const SizedBox(
@@ -122,7 +136,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(
-                  height: 28,
+                  height: 24,
                 ),
                 ButtonRepo(
                   text: 'Masuk',
