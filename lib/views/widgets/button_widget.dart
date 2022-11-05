@@ -33,6 +33,7 @@ class ButtonRepo extends StatelessWidget {
           child: Text(
             text,
             style: TextStyle(
+              fontWeight: FontWeight.w500,
               fontSize: 16,
               color: changeTextColor == false
                   ? Colors.white

@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:repo/controllers/login_controller.dart';
 import 'package:repo/core/shared/colors.dart';
-import 'package:repo/core/shared/assets.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/models/user/user.dart';
@@ -64,7 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     'Masuk',
                     style: TextStyle(
                       color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w700,
                       fontSize: 20,
                     ),
                     textAlign: TextAlign.left,
@@ -73,46 +72,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 12,
                 ),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Email',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
                 TextFieldRepo(
                   textController: _emailController,
-                  hintText: 'Masukkan alamat email',
+                  hintText: 'Email',
                 ),
                 const SizedBox(
                   height: 24,
                 ),
-                Container(
-                  alignment: Alignment.centerLeft,
-                  child: const Text(
-                    'Password',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 20,
-                    ),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                const SizedBox(
-                  height: 4,
-                ),
                 TextFieldRepo(
                   textController: _passwordController,
-                  hintText: 'Masukkan password',
+                  hintText: 'Password',
                   obscureText: true,
                 ),
                 const SizedBox(
@@ -166,7 +135,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           text: 'Belum mempunyai akun? ',
                           style: TextStyle(
                             color: hexToColor('#7C7C7C'),
-                            fontWeight: FontWeight.w500,
+                            fontWeight: FontWeight.w400,
                             fontSize: 16,
                           ),
                         ),

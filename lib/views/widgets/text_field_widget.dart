@@ -27,6 +27,10 @@ class _TextFieldRepoState extends State<TextFieldRepo> {
       controller: widget.textController,
       obscureText: widget.obscureText == true ? _isObscure : _isnotObscure,
       decoration: InputDecoration(
+        hintStyle: const TextStyle(
+          fontWeight: FontWeight.w400,
+          fontSize: 16,
+        ),
         filled: true,
         fillColor: hexToColor(ColorsRepo.secondaryColor),
         enabledBorder: UnderlineInputBorder(
