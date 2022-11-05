@@ -10,7 +10,6 @@ void main() async {
       title: 'ITC Repository',
       theme: ThemeData(
         fontFamily: 'Poppins',
-        primarySwatch: Colors.blue,
       ),
       getPages: AppRoutesRepo.pages,
     ),
