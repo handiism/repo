@@ -7,6 +7,9 @@ import 'package:repo/core/shared/styles.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 import 'package:get/get.dart';
 
+import '../widgets/button_widget.dart';
+import '../widgets/text_field_widget.dart';
+
 final TextEditingController _emailController = TextEditingController();
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -93,30 +96,9 @@ class ForgotPasswordScreen extends StatelessWidget {
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                   child: SizedBox(
                     height: 44,
-                    child: TextFormField(
-                      controller: _emailController,
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: hexToColor(ColorsRepo.primaryColor),
-                      ),
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                const BorderSide(color: Color(0x00000000)),
-                            borderRadius: BorderRadius.circular(6)),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: hexToColor(ColorsRepo.primaryColor),
-                          ),
-                        ),
-                        hintText: 'Masukkan Alamat Email',
-                        hintStyle: TextStyle(
-                          color: hexToColor(ColorsRepo.primaryColor),
-                          fontSize: 16,
-                        ),
-                        filled: true,
-                        fillColor: hexToColor(ColorsRepo.secondaryColor),
-                      ),
+                    child: TextFieldRepo(
+                      textController: _emailController,
+                      hintText: 'Masukkan Alamat Email',
                     ),
                   ),
                 ),
@@ -125,13 +107,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 24, 0, 0),
                   child: SizedBox(
                     height: 44,
-                    child: ElevatedButton(
+                    child: ButtonRepo(
+                      text: 'Kirim',
+                      backgroundColor: ColorsRepo.primaryColor,
+                      changeTextColor: false,
                       onPressed: () {
                         nullHandler();
                         emailHandler();
                       },
-                      style: raisedButtonStyle(),
-                      child: const Text('Kirim'),
                     ),
                   ),
                 ),
