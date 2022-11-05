@@ -5,11 +5,8 @@ import 'package:repo/core/shared/colors.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/models/user/user.dart';
-import 'package:repo/views/widgets/banner_widget.dart';
-import 'package:repo/views/widgets/button_widget.dart';
+import 'package:repo/views/widgets/widgets.dart';
 import 'package:get/get.dart';
-import 'package:repo/views/widgets/text_field_widget.dart';
-import 'package:repo/views/widgets/snackbar_widget.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -48,18 +45,18 @@ class _LoginScreenState extends State<LoginScreen> {
     );
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(36, 36, 36, 0),
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(36, 36, 36, 36),
             child: Column(
               children: [
                 const BannerRepo(),
                 const SizedBox(
                   height: 24,
                 ),
-                Container(
+                const Align(
                   alignment: Alignment.centerLeft,
-                  child: const Text(
+                  child: Text(
                     'Masuk',
                     style: TextStyle(
                       color: Colors.black,
@@ -134,7 +131,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextSpan(
                           text: 'Belum mempunyai akun? ',
                           style: TextStyle(
-                            color: hexToColor('#7C7C7C'),
+                            color: hexToColor(ColorsRepo.darkGray),
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
                           ),
