@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/models/user/user.dart';
@@ -16,7 +14,6 @@ class ApiService extends GetConnect implements GetxService {
       throw Error();
     }
 
-    return userLoginResponseFromJson(
-        json.encode(response.body['data']['user']));
+    return UserLoginResponse.fromJson(response.body['data']['user']);
   }
 }
