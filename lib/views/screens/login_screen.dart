@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:repo/controllers/login_controller.dart';
 import 'package:repo/core/shared/colors.dart';
@@ -63,6 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 Text(
                   'ITC Repository',
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: hexToColor(ColorsRepo.primaryColor),
                     fontWeight: FontWeight.bold,
@@ -72,17 +74,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(
                   height: 15,
                 ),
-                Row(
-                  children: const [
-                    Text(
-                      'Masuk',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: const Text(
+                    'Masuk',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
                     ),
-                  ],
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 const SizedBox(
                   height: 10,
@@ -99,26 +101,28 @@ class _LoginScreenState extends State<LoginScreen> {
                   hintText: 'Password',
                   obscureText: true,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    TextButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutesRepo.forgotPassword);
-                      },
-                      child: Text(
-                        'Lupa Kata sandi?',
-                        style: TextStyle(
-                          color: hexToColor(ColorsRepo.primaryColor),
-                          fontWeight: FontWeight.w500,
-                          fontSize: 16,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
                 const SizedBox(
                   height: 10,
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(AppRoutesRepo.forgotPassword);
+                  },
+                  child: Container(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'Lupa Kata sandi?',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(
+                        color: hexToColor(ColorsRepo.primaryColor),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 28,
                 ),
                 ButtonRepo(
                   text: 'Masuk',
@@ -136,31 +140,38 @@ class _LoginScreenState extends State<LoginScreen> {
                     }
                   },
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      'Belum mempunyai akun?',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Get.toNamed(AppRoutesRepo.signup);
-                      },
-                      child: Text(
-                        'Daftar',
-                        style: TextStyle(
-                          color: hexToColor(ColorsRepo.primaryColor),
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
+                const SizedBox(
+                  height: 10,
+                ),
+                Center(
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: 'Belum mempunyai akun? ',
+                          style: TextStyle(
+                            color: hexToColor('#7C7C7C'),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
-                    )
-                  ],
-                )
+                        TextSpan(
+                          text: 'Daftar',
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              Get.toNamed(AppRoutesRepo.signup);
+                            },
+                          style: TextStyle(
+                            color: hexToColor(ColorsRepo.primaryColor),
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
