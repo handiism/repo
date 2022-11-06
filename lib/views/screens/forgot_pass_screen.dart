@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:repo/controllers/forgot_pass_controller.dart';
 import 'package:repo/core/shared/colors.dart';
 import 'package:repo/core/routes/routes.dart';
+import 'package:repo/models/forgotpass/forgotpass.dart';
 import 'package:repo/views/widgets/widgets.dart';
 import 'package:get/get.dart';
 
@@ -30,6 +32,9 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut(
+      () => ForgotpassController(),
+    );
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -67,8 +72,14 @@ class ForgotPasswordScreen extends StatelessWidget {
                   backgroundColor: ColorsRepo.primaryColor,
                   changeTextColor: false,
                   onPressed: () {
-                    nullHandler();
-                    emailHandler();
+                    if (nullHandler()) {
+                      if (emailHandler()) {
+                        ForgotPassRequest request = ForgotPassRequest(
+                          email: _emailController.text.trim(),
+                        );
+                        Get.find<ForgotpassController>().login(request);
+                      }
+                    }
                   },
                 ),
                 const SizedBox(
