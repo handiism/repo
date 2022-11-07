@@ -22,20 +22,10 @@ class _LoginScreenState extends State<LoginScreen> {
   nullHandler() {
     bool isFilled = true;
     if (_emailController.text == '' || _passwordController.text == '') {
-      snackbarRepo('Warning!', 'Email/Password Tidak Boleh Kosong!');
+      snackbarRepo('Warning!', 'Email/Username/Password Tidak Boleh Kosong!');
       isFilled = false;
     }
     return isFilled;
-  }
-
-  emailHandler() {
-    bool emailValidation =
-        RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
-            .hasMatch(_emailController.text);
-    if (!emailValidation) {
-      snackbarRepo('Warning!', 'Email Salah!');
-    }
-    return emailValidation;
   }
 
   @override
@@ -110,13 +100,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   changeTextColor: false,
                   onPressed: () {
                     if (nullHandler()) {
-                      if (emailHandler()) {
-                        UserLoginRequest request = UserLoginRequest(
-                          emailUsername: _emailController.text.trim(),
-                          password: _passwordController.text.trim(),
-                        );
-                        Get.find<LoginController>().login(request);
-                      }
+                      UserLoginRequest request = UserLoginRequest(
+                        emailUsername: _emailController.text.trim(),
+                        password: _passwordController.text.trim(),
+                      );
+                      Get.find<LoginController>().login(request);
                     }
                   },
                 ),

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/models/user/user.dart';
@@ -13,13 +12,20 @@ class LoginController extends GetxController {
   Future<void> login(UserLoginRequest userLoginRequest) async {
     _isLoading = true;
     try {
-      UserLoginResponse userLoginRespone =
+      Response response =
           await service.login(ApiRoutesRepo.login, userLoginRequest);
-      debugPrint(userLoginRespone.toJson().toString());
-      debugPrint(userLoginRespone.accessToken);
-      debugPrint(userLoginRespone.username);
+      if (response.statusCode == 200) {
+        UserLoginResponse userLoginResponse =
+            UserLoginResponse.fromJson(response.body['data']['user']);
+        if (userLoginResponse.accessToken != '') {
+          // ignore: avoid_print
+          print(userLoginResponse.accessToken);
+        }
+      } else {
+        snackbarRepo('Kesalahan Login', 'Email/Username/Password Salah');
+      }
     } catch (e) {
-      snackbarRepo('Kesalahan Login', 'Email/Password Salah');
+      throw Error();
     }
 
     update();
