@@ -4,8 +4,8 @@ import 'package:repo/controllers/login_controller.dart';
 import 'package:repo/core/shared/colors.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/routes/routes.dart';
-import 'package:repo/models/user/user.dart';
-import 'package:repo/views/widgets/widgets.dart';
+import 'package:repo/models/user/login.dart';
+import 'package:repo/views/widgets/index.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {

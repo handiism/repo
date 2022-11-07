@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:repo/views/screens/screens.dart';
+import 'package:repo/views/screens/index.dart';
 
 abstract class AppRoutesRepo {
   static const String login = '/login';

@@ -1,12 +1,5 @@
-import 'dart:convert';
-
-Forgotpass forgotpassFromJson(String str) =>
-    Forgotpass.fromJson(json.decode(str));
-
-String forgotpassToJson(Forgotpass data) => json.encode(data.toJson());
-
-class Forgotpass {
-  Forgotpass({
+class ForgotPasswordResponse {
+  ForgotPasswordResponse({
     required this.status,
     required this.message,
     required this.data,
@@ -16,26 +9,27 @@ class Forgotpass {
   String message;
   String data;
 
-  factory Forgotpass.fromJson(Map<String, dynamic> json) => Forgotpass(
-        status: json["status"],
-        message: json["message"],
-        data: json["data"],
+  factory ForgotPasswordResponse.fromJson(Map<String, dynamic> json) =>
+      ForgotPasswordResponse(
+        status: json['status'],
+        message: json['message'],
+        data: json['data'],
       );
 
   Map<String, dynamic> toJson() => {
-        "status": status,
-        "message": message,
-        "data": data,
+        'status': status,
+        'message': message,
+        'data': data,
       };
 }
 
-class ForgotPassRequest {
-  ForgotPassRequest({
+class ForgotPasswordRequest {
+  ForgotPasswordRequest({
     required this.email,
   });
   late final String email;
 
-  ForgotPassRequest.fromJson(Map<String, dynamic> json) {
+  ForgotPasswordRequest.fromJson(Map<String, dynamic> json) {
     email = json['email'];
   }
 

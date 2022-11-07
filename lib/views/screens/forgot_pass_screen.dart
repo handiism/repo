@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:repo/controllers/forgot_pass_controller.dart';
 import 'package:repo/core/shared/colors.dart';
 import 'package:repo/core/routes/routes.dart';
-import 'package:repo/models/forgotpass/forgotpass.dart';
-import 'package:repo/views/widgets/widgets.dart';
+import 'package:repo/models/user/forgot_password.dart';
+import 'package:repo/views/widgets/index.dart';
 import 'package:get/get.dart';
 
 final TextEditingController _emailController = TextEditingController();
@@ -74,7 +74,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   onPressed: () {
                     if (nullHandler()) {
                       if (emailHandler()) {
-                        ForgotPassRequest request = ForgotPassRequest(
+                        ForgotPasswordRequest request = ForgotPasswordRequest(
                           email: _emailController.text.trim(),
                         );
                         Get.find<ForgotpassController>().login(request);

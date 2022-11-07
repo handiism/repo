@@ -5,19 +5,30 @@ import 'package:repo/controllers/sign_up_controller.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/shared/colors.dart';
-import 'package:repo/views/widgets/widgets.dart';
+import 'package:repo/models/user/index.dart';
+import 'package:repo/views/widgets/index.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    List<String> division = <String>[
-      'Mobile Development',
-      'Web Development',
-      'Human Resources'
-    ];
     SignUpController signUpController = SignUpController();
+    Get.lazyPut(() => signUpController);
+
+    TextEditingController nameController = TextEditingController();
+    TextEditingController usernameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
+
+    List<String> division = <String>[
+      'Back-end Developer',
+      'Front-end Developer',
+      'Mobile Developer',
+      'Public Relations',
+      'Project Manager'
+    ];
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -45,21 +56,21 @@ class SignUpScreen extends StatelessWidget {
                   height: 12,
                 ),
                 TextFieldRepo(
-                  textController: TextEditingController(),
+                  textController: nameController,
                   hintText: 'Nama',
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 TextFieldRepo(
-                  textController: TextEditingController(),
+                  textController: usernameController,
                   hintText: 'Username',
                 ),
                 const SizedBox(
                   height: 12,
                 ),
                 TextFieldRepo(
-                  textController: TextEditingController(),
+                  textController: emailController,
                   hintText: 'Email',
                 ),
                 const SizedBox(
@@ -113,6 +124,7 @@ class SignUpScreen extends StatelessWidget {
                 ),
                 TextField(
                   obscureText: true,
+                  controller: passwordController,
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: hexToColor(ColorsRepo.secondaryColor),
@@ -130,7 +142,15 @@ class SignUpScreen extends StatelessWidget {
                 ButtonRepo(
                   text: 'Daftar',
                   backgroundColor: ColorsRepo.primaryColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    var request = UserRegisterRequest(
+                        username: usernameController.text,
+                        fullName: nameController.text,
+                        email: emailController.text,
+                        password: passwordController.text);
+
+                    Get.find<SignUpController>().signUp(request);
+                  },
                 ),
                 const SizedBox(
                   height: 10,
