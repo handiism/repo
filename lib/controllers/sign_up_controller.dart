@@ -15,28 +15,10 @@ class SignUpController extends GetxController {
 
   Future<void> signUp(UserRegisterRequest request) async {
     try {
-      List<String> division = <String>[
-        'Back-end Developer',
-        'Front-end Developer',
-        'Mobile Developer',
-        'Public Relations',
-        'Project Manager'
-      ];
-
-      for (var element in division) {
-        debugPrint('${selectedDivision.toString()} == $element');
-        if (selectedDivision.toString() == element) {
-          request.idDivision = division.indexOf(element) + 1;
-          break;
-        } else {
-          request.idDivision = 0;
-        }
-      }
-
       var response = await service.register(request);
       debugPrint(response.data.toJson().toString());
     } catch (e) {
-      snackbarRepo('Kesalah Register', 'Pastikan Data Terisi Dengan Benar.');
+      snackbarRepo('Kesalahan Register', 'Pastikan Data Terisi Dengan Benar.');
     }
   }
 }
