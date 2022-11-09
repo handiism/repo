@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:repo/core/routes/routes.dart';
 import 'package:repo/models/user/index.dart';
 import 'package:repo/core/utils/base_response.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http ;
 
 class UserService extends GetConnect implements GetxService {
   Future<BaseResponse<UserLoginResponseWrapper>> login(
@@ -31,16 +33,21 @@ class UserService extends GetConnect implements GetxService {
   }
 
   Future<BaseResponse<User>> register(UserRegisterRequest request) async {
-    Response response = await post(
-        ApiRoutesRepo.baseUrl + ApiRoutesRepo.register, request.toJson(),
-        headers: {'Content-Type': 'application/json; charset=UTF-8'});
+   
+   var response = await http.post(
+      Uri.parse(
+      ApiRoutesRepo.baseUrl + ApiRoutesRepo.register), body: jsonEncode(request),
+      headers: {'Content-Type': 'application/json; charset=UTF-8'});
+
+    var body = jsonDecode(response.body);
 
     if (response.statusCode != 200) {
-      throw Error();
-    }
+      throw body['message'] ?? "Unkown Error";
+      }
 
     return BaseResponse<User>.fromJson(
-        response.body, (data) => User.fromJson(data));
+        body, (data) => User.fromJson(data));
+    
   }
 
   Future<BaseResponse<User>> fetch(int id) async {
