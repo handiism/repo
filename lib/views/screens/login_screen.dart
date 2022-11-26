@@ -61,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 TextFieldRepo(
                   textController: _emailController,
-                  hintText: 'Email',
+                  hintText: 'Email/Username',
                 ),
                 const SizedBox(
                   height: 24,

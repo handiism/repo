@@ -4,4 +4,5 @@ abstract class ColorsRepo {
   static const String lightGray = '#EAEAEA';
   static const String darkGray = '#7C7C7C';
   static const String redColorDanger = '#E42F2F';
+  static const String accentColor = '#E2F4C2';
 }
