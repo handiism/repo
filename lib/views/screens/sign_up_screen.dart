@@ -7,27 +7,84 @@ import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/shared/colors.dart';
 import 'package:repo/models/user/index.dart';
 import 'package:repo/views/widgets/index.dart';
+import 'package:repo/core/routes/api_routes.dart';
+import 'package:http/http.dart' as http ;
+import 'dart:convert';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
   @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+
+  SignUpController signUpController = SignUpController();
+
+  TextEditingController nameController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  var divisionController;
+ 
+
+   inputHandler() {
+    bool isFilled = true;
+    if (emailController.text == '' || passwordController.text == '' || usernameController.text == '' || nameController.text == '' || divisionController == null) {
+      snackbarRepo('Warning!', 'Data Tidak Boleh Kosong!');
+      isFilled = false;
+    }
+    else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(emailController.text)) {
+      snackbarRepo('Warning!', 'Isi Email Dengan Benar!');
+      isFilled = false;
+    }
+    else if (nameController.text.length < 6) {
+      snackbarRepo('Warning!', 'Nama Minimal 6 Karakter!');
+      isFilled = false;
+    }
+    else if (passwordController.text.length < 8) {
+      snackbarRepo('Warning!', 'Password Minimal 8 Karakter !');
+      isFilled = false;
+    }
+    else if (usernameController.text.length < 4) {
+      snackbarRepo('Warning!', 'Username Minimal 4 Karakter !');
+      isFilled = false;
+    }
+    return isFilled;
+  }
+
+
+  final String url = ApiRoutesRepo.baseUrl + ApiRoutesRepo.division;
+  List dropdownlist = [];
+
+  Future<String> getdata() async {
+    try{
+      var response = await
+      http.get(
+      Uri.parse(url),
+      headers: {'Content-Type': 'application/json; charset=UTF-8'});
+      List resBody = (json.decode(response.body) as Map<String, dynamic>)['data'];;
+    
+      setState(() {
+        dropdownlist = resBody;
+      });
+
+      return "Success";
+
+    }catch(e){return "failed";}
+   
+  }
+
+  @override
+  void initState(){
+    super.initState();
+    this.getdata();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    SignUpController signUpController = SignUpController();
     Get.lazyPut(() => signUpController);
-
-    TextEditingController nameController = TextEditingController();
-    TextEditingController usernameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
-
-    List<String> division = <String>[
-      'Back-end Developer',
-      'Front-end Developer',
-      'Mobile Developer',
-      'Public Relations',
-      'Project Manager'
-    ];
 
     return Scaffold(
       body: SafeArea(
@@ -105,15 +162,19 @@ class SignUpScreen extends StatelessWidget {
                           dropdownColor: hexToColor(ColorsRepo.secondaryColor),
                           onChanged: (value) {
                             signUpController.setDivision(value!);
+                            
+                            setState(() {
+                              divisionController = value;
+                            });
                           },
-                          items: division.map<DropdownMenuItem<String>>(
-                            (String e) {
-                              return DropdownMenuItem<String>(
-                                value: e,
-                                child: Text(e),
-                              );
-                            },
-                          ).toList(),
+                           items: dropdownlist.map(
+                              (e) {
+                                return DropdownMenuItem(
+                                  value: e['id'].toString(),
+                                  child: Text(e['divisionName']),
+                                );
+                              },
+                            ).toList(),
                         ),
                       ),
                     ),
@@ -143,13 +204,18 @@ class SignUpScreen extends StatelessWidget {
                   text: 'Daftar',
                   backgroundColor: ColorsRepo.primaryColor,
                   onPressed: () {
+                    if(inputHandler())
+                    {var divisionSelected = int.parse(divisionController);
+                    
                     var request = UserRegisterRequest(
                         username: usernameController.text,
                         fullName: nameController.text,
                         email: emailController.text,
-                        password: passwordController.text);
-
+                        password: passwordController.text,
+                        idDivision: divisionSelected);
+                    
                     Get.find<SignUpController>().signUp(request);
+                    }
                   },
                 ),
                 const SizedBox(
