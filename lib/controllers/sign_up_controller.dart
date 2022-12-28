@@ -36,7 +36,7 @@ class SignUpController extends GetxController {
       var response = await service.register(request);
       debugPrint(response.data.toJson().toString());
     } catch (e) {
-      snackbarRepo('Kesalah Register', 'Pastikan Data Terisi Dengan Benar.');
+      snackbarRepo('Kesalahan Register', 'Pastikan Data Terisi Dengan Benar.');
     }
   }
 }
