@@ -6,4 +6,5 @@ abstract class ColorsRepo {
   static const String redColorDanger = '#E42F2F';
   static const String accentColor = '#E2F4C2';
   static const String redColorPR = '#E52020';
+  static const String blueDeFrance = '#318CE7';
 }

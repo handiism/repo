@@ -6,6 +6,7 @@ abstract class AppRoutesRepo {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgotPassword = '/forgotpass';
+  static const String pertanyaan = '/pertanyaan';
 
   static List<GetPage<Widget>> pages = [
     GetPage(
@@ -19,6 +20,10 @@ abstract class AppRoutesRepo {
     GetPage(
       name: forgotPassword,
       page: () => const ForgotPasswordScreen(),
+    ),
+     GetPage(
+      name: pertanyaan,
+      page: () => const PertanyaanScreen(),
     ),
   ];
 }

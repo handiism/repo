@@ -45,3 +45,55 @@ class ButtonRepo extends StatelessWidget {
     );
   }
 }
+
+class ButtonBalas extends StatelessWidget {
+  
+  final VoidCallback onPressed;
+
+  const ButtonBalas({
+    super.key,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        
+        height: 40,
+        width: 100,
+        decoration: BoxDecoration(
+          color: hexToColor(ColorsRepo.secondaryColor),
+          borderRadius: const BorderRadius.all(Radius.circular(5)),
+        ),
+        child: Center(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,     
+            children: [
+            Icon(
+                Icons.reply,
+                color: hexToColor(ColorsRepo.primaryColor),
+                size: 24,
+            ),
+            SizedBox(
+              width:2
+            ),
+            Text(
+            "Balas",
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 16,
+              color: hexToColor(ColorsRepo.primaryColor),
+              ),
+            ),
+
+          ]
+          ),
+        ),
+        
+      ),
+    );
+  }
+}

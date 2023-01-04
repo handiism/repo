@@ -29,3 +29,30 @@ SnackbarController snackbarRepo(String title, String message) {
     borderRadius: 5,
   );
 }
+
+SnackbarController snackbarRepoSuccess(String title, String message) {
+  return Get.snackbar(
+    title,
+    message,
+    icon: const Icon(
+      Icons.check,
+      color: Colors.white,
+    ),
+    backgroundColor: hexToColor(ColorsRepo.blueDeFrance),
+    titleText: Text(
+      title,
+      style: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+    ),
+    messageText: Text(
+      message,
+      style: const TextStyle(
+        color: Colors.white,
+      ),
+    ),
+    borderRadius: 5,
+  );
+}
