@@ -13,7 +13,8 @@ class UserService extends GetConnect implements GetxService {
         headers: {'Content-Type': 'application/json; charset=UTF-8'});
 
     if (response.statusCode != 200) {
-      throw Error();
+      // ignore: avoid_print
+      print(response.statusCode);
     }
 
     return BaseResponse<UserLoginResponseWrapper>.fromJson(
