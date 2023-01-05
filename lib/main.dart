@@ -6,7 +6,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutesRepo.login,
+      initialRoute: AppRoutesRepo.addDiscuss,
       title: 'ITC Repository',
       theme: ThemeData(
         fontFamily: 'Poppins',
