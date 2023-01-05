@@ -23,8 +23,7 @@ class SignUpController extends GetxController {
       Get.back();
       snackbarRepoSuccess("Daftar Berhasil", "Akun tnda telah terbuat");    
     } catch (e) {
-      print(e.toString());
-      snackbarRepo('Kesalahan Register', e.toString());
+      snackbarRepo('Kesalahan Register', 'Pastikan Data Terisi Dengan Benar.');
     }
   }
 }
