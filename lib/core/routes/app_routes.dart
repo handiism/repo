@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:repo/views/screens/add_discuss.dart';
 import 'package:repo/views/screens/index.dart';
 
 abstract class AppRoutesRepo {
@@ -10,6 +9,7 @@ abstract class AppRoutesRepo {
   static const String pertanyaan = '/pertanyaan';
   static const String discussMateri = '/discuss';
   static const String addDiscuss = "/addDiscuss";
+  static const String daftarMateri = "/daftarMateri";
   static List<GetPage<Widget>> pages = [
     GetPage(
       name: login,
@@ -34,6 +34,10 @@ abstract class AppRoutesRepo {
     GetPage(
       name: addDiscuss,
       page: () => const AddDiscussScreen(),
+    ),
+    GetPage(
+      name: daftarMateri,
+      page: () => const DaftarMateriScreen(),
     ),
   ];
 }
