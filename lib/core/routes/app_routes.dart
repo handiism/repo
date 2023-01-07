@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:repo/views/screens/forgot_pass_msg.dart';
 import 'package:repo/views/screens/index.dart';
 
 abstract class AppRoutesRepo {
@@ -10,6 +11,8 @@ abstract class AppRoutesRepo {
   static const String discussMateri = '/discuss';
   static const String addDiscuss = "/addDiscuss";
   static const String daftarMateri = "/daftarMateri";
+  static const String forgotPasswordMassage = '/forgotpassmsg';
+
   static List<GetPage<Widget>> pages = [
     GetPage(
       name: login,
@@ -22,6 +25,10 @@ abstract class AppRoutesRepo {
     GetPage(
       name: forgotPassword,
       page: () => const ForgotPasswordScreen(),
+    ),
+    GetPage(
+      name: forgotPasswordMassage,
+      page: () => const ForgotPasswordMsg(),
     ),
     GetPage(
       name: discussMateri,
