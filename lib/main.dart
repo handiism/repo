@@ -6,7 +6,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutesRepo.daftarMateri,
+      initialRoute: AppRoutesRepo.login,
       title: 'ITC Repository',
       theme: ThemeData(
         fontFamily: 'Poppins',
