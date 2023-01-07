@@ -61,7 +61,9 @@ class ForgotPasswordMsg extends StatelessWidget {
                   text: 'Kembali ke Halaman Masuk',
                   backgroundColor: ColorsRepo.primaryColor,
                   changeTextColor: false,
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed(AppRoutesRepo.login);
+                  },
                 ),
                 const SizedBox(
                   height: 10,

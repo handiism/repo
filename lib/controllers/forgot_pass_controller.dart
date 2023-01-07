@@ -17,6 +17,9 @@ class ForgotpassController extends GetxController {
           await service.forgotPassword(ApiRoutesRepo.forgot, userLoginRequest);
       debugPrint(userLoginRespone.message);
       debugPrint(userLoginRespone.data);
+      if (userLoginRespone.status == "success") {
+        Get.offNamed(AppRoutesRepo.forgotPasswordMassage);
+      }
     } catch (e) {
       snackbarRepo('kesalahan', 'Email tidak ditemukan');
     }
