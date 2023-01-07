@@ -7,11 +7,15 @@ import 'package:repo/models/user/forgot_password.dart';
 import 'package:repo/views/widgets/index.dart';
 import 'package:get/get.dart';
 
-final TextEditingController _emailController = TextEditingController();
-
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
 
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final TextEditingController _emailController = TextEditingController();
   nullHandler() {
     bool isFilled = true;
     if (_emailController.text == '') {
