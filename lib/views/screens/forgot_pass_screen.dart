@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:repo/controllers/forgot_pass_controller.dart';
 import 'package:repo/core/shared/colors.dart';
 import 'package:repo/core/routes/routes.dart';
+import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/models/user/forgot_password.dart';
 import 'package:repo/views/widgets/index.dart';
 import 'package:get/get.dart';
 
-final TextEditingController _emailController = TextEditingController();
-
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
 
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final TextEditingController _emailController = TextEditingController();
   nullHandler() {
     bool isFilled = true;
     if (_emailController.text == '') {
@@ -89,12 +94,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                   onTap: () {
                     Get.toNamed(AppRoutesRepo.login);
                   },
-                  child: const Text(
+                  child: Text(
                     'Kembali ke Halaman Masuk',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.w500,
-                      color: Color.fromRGBO(1, 87, 92, 1),
+                      color: hexToColor(ColorsRepo.primaryColor),
                       fontSize: 16,
                     ),
                   ),
