@@ -9,11 +9,13 @@ class TextFieldRepo extends StatefulWidget {
   final TextEditingController textController;
   final String hintText;
   final bool obscureText;
+  final bool multiLine;
   const TextFieldRepo({
     super.key,
     required this.textController,
     required this.hintText,
     this.obscureText = false,
+    this.multiLine = false
   });
 
   @override
@@ -25,6 +27,8 @@ class _TextFieldRepoState extends State<TextFieldRepo> {
   Widget build(BuildContext context) {
     return TextField(
       controller: widget.textController,
+      maxLines: widget.multiLine==true? null: 1,
+      expands: widget.multiLine,
       obscureText: widget.obscureText == true ? _isObscure : _isnotObscure,
       decoration: InputDecoration(
         hintStyle: const TextStyle(

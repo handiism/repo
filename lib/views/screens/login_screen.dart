@@ -104,6 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         emailUsername: _emailController.text.trim(),
                         password: _passwordController.text.trim(),
                       );
+                      print(request.toJson());
                       Get.find<LoginController>().login(request);
                     }
                   },

@@ -7,7 +7,6 @@ import 'package:repo/core/utils/formatting.dart';
 import 'package:repo/core/shared/colors.dart';
 import 'package:repo/models/user/index.dart';
 import 'package:repo/views/widgets/index.dart';
-import 'package:repo/core/routes/api_routes.dart';
 import 'package:http/http.dart' as http ;
 import 'dart:convert';
 
