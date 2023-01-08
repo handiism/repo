@@ -45,6 +45,7 @@ class UserLoginResponse {
     required this.idRole,
     required this.idDivision,
     required this.accessToken,
+    required this.refreshToken,
   });
 
   int id;
@@ -54,6 +55,7 @@ class UserLoginResponse {
   int idRole;
   int idDivision;
   String accessToken;
+  String refreshToken;
 
   factory UserLoginResponse.fromJson(Map<String, dynamic> json) =>
       UserLoginResponse(
@@ -64,6 +66,7 @@ class UserLoginResponse {
         idRole: json['id_role'],
         idDivision: json['id_division'],
         accessToken: json['accessToken'],
+        refreshToken: json['refreshToken'],
       );
 
   Map<String, dynamic> toJson() => {
@@ -74,5 +77,6 @@ class UserLoginResponse {
         'id_role': idRole,
         'id_division': idDivision,
         'accessToken': accessToken,
+        'refreshToken': refreshToken,
       };
 }
