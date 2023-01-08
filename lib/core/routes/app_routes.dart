@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:repo/views/screens/forgot_pass_msg.dart';
 import 'package:repo/views/screens/index.dart';
+import 'package:repo/views/widgets/bottom_navigation_widget.dart';
 
 abstract class AppRoutesRepo {
   static const String login = '/login';
   static const String signup = '/signup';
   static const String forgotPassword = '/forgotpass';
   static const String pertanyaan = '/pertanyaan';
+  static const String bottomNavigator = '/bottomNavigator';
   static const String discussMateri = '/discuss';
   static const String addDiscuss = "/addDiscuss";
   static const String daftarMateri = "/daftarMateri";
@@ -39,6 +41,7 @@ abstract class AppRoutesRepo {
       name: pertanyaan,
       page: () => const PertanyaanScreen(),
     ),
+    GetPage(name: bottomNavigator, page: () => const BottomNavRepo()),
     GetPage(
       name: addDiscuss,
       page: () => const AddDiscussScreen(),

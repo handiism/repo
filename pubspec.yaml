@@ -14,6 +14,7 @@ dependencies:
   shared_preferences: ^2.0.15
   http: ^0.13.5
   dropdown_search: ^5.0.3
+  flutter_svg: ^1.1.6
 
 dev_dependencies:
   flutter_test:
@@ -24,6 +25,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/icons/
 
   fonts:
     - family: Poppins

@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:repo/core/routes/app_routes.dart';
 import 'package:repo/models/user/login.dart';
 import 'package:repo/services/user_service.dart';
-import 'package:repo/views/widgets/bottom_navigation_widget.dart';
 import 'package:repo/views/widgets/snackbar_widget.dart';
 
 class LoginController extends GetxController {
@@ -17,7 +16,7 @@ class LoginController extends GetxController {
       var response = await service.login(userLoginRequest);
       debugPrint(response.data.user.toJson().toString());
       if (response.status == 'success') {
-        Get.offAll(const BottomNavRepo());
+        Get.offAllNamed(AppRoutesRepo.bottomNavigator);
       }
     } catch (e) {
       snackbarRepo('Kesalahan Login', 'Email/Username/Password Salah');
