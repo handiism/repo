@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:repo/core/shared/assets.dart';
 import 'package:repo/views/screens/home_screen.dart';
 
 import '../../core/shared/colors.dart';
@@ -33,16 +35,21 @@ class _BottomNavRepoState extends State<BottomNavRepo> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: hexToColor(ColorsRepo.primaryColor),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_rounded),
+            icon: _selectedIndex == 0
+                ? SvgPicture.asset(AssetsRepo.iconBerandaSelected)
+                : SvgPicture.asset(AssetsRepo.iconBerandaUnselected),
             label: 'Beranda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: _selectedIndex == 1
+                ? SvgPicture.asset(AssetsRepo.iconProfilSelected)
+                : SvgPicture.asset(AssetsRepo.iconProfilUnselected),
             label: 'Profil',
           ),
         ],
+        unselectedItemColor: Colors.white,
         selectedItemColor: Colors.white,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
