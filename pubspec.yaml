@@ -14,6 +14,7 @@ dependencies:
   shared_preferences: ^2.0.15
   http: ^0.13.5
   dropdown_search: ^5.0.3
+  flutter_native_splash: ^2.2.16
 
 dev_dependencies:
   flutter_test:
